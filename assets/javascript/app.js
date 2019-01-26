@@ -75,11 +75,14 @@ $(document).ready(function () {
    ] // end questions object
    
    var labels = ["first", "second", "third", "forth"];
+
+   $("#gameScreen").hide();
    
    // click to start then display quesions
    var startGame = $("#start-btn").on('click', function() {
    $(this).parent().hide(2000);
-   $('.container').show(1500);
+   $("#flag").hide(2000);
+   $('#gameScreen').show(1500);
    countdown(60);
    questionDisplay();
    });
@@ -101,8 +104,7 @@ $(document).ready(function () {
          $('.questions').prepend('<hr />');
       }
    }
-   
-   
+       
    // function for countdown timer
    var countdown = function(seconds) {
       
@@ -111,10 +113,31 @@ $(document).ready(function () {
          $("#time-remain").html(seconds);
          
          if (seconds <= 0) {
-            $('.container').fadeOut(500);
+            $('#gameScreen').fadeOut(500);
             var correctAnswers = 0;
             var wrongAnswers = 0;
             var unAnswered = 0;
+            
+            $('#timesUp').fadeIn(1000).show();
+
+            var restartGame2 = $("#reset-btn-timesUp").on('click', function() {
+               correctAnswers = 0;
+               wrongAnswers = 0;
+             
+               $(this).parent().fadeOut(500);
+               $('#gameScreen').show(1500);
+               $("#correctScreen").empty();
+               $("#wrongScreen").empty();         
+      
+               correctAnswers = "";
+               wrongAnswers = "";
+               countdown(60);
+         
+               $("#correctScreen").html("Correct Answers: " + correctAnswers);
+               $("#wrongScreen").html("Wrong Answers: " + wrongAnswers);
+      
+      
+            });
             
             
             // loop through correctArray & radioName to match html elements & answers
@@ -123,17 +146,13 @@ $(document).ready(function () {
                if ($('input:radio[name="' + questions[i].name + '"]:checked').val() === questions[i].correct) {
                   
                   correctAnswers++;
-                  console.log("this is correct! number:" + i)
                } else {
                   wrongAnswers++;
-                  console.log("this is wrong! number:" + i)
                };
             }
             $('#correctTimesUp').append(correctAnswers);
             // display wrongAnswers
             $('#wrongTimesUp').append(wrongAnswers);
-            $('#timesUp').fadeIn(1000).show();
-            $('#reset-btn').fadeIn(1000).show();
             
             // alert("Times Up!");
             clearInterval(timer);
@@ -146,7 +165,6 @@ $(document).ready(function () {
          clearInterval(timer);
       })
    }; // end countdown
-   
    
    // function to grade quiz once submit button is clicked
    var gradeQuiz = $('#sub-but').on('click', function() {
@@ -172,7 +190,7 @@ $(document).ready(function () {
       // stop timer
       countdown();
       // fade out questions
-      $('.container').hide(2000);
+      $('#gameScreen').hide(2000);
       // show answerScreen
       $('#answerScreen').show();
       // display correctAnswers
@@ -184,16 +202,16 @@ $(document).ready(function () {
       // click to restart game 
 
 
-  
-      var restartGame = $(".btn-danger").on('click', function() {
-         countdown(60);
+      countdown(60);
+      
+      var restartGame = $("#reset-btn-answerScreen").on('click', function() {
          correctAnswers = 0;
          wrongAnswers = 0;
          
          $("#answerScreen").hide(2000);
          $("#correctScreen").empty();
          $("#wrongScreen").empty();         
-         $('.container').show(1500);
+         $('#gameScreen').show(1500);
 
          correctAnswers = "";
          wrongAnswers = "";
@@ -204,24 +222,7 @@ $(document).ready(function () {
 
       });
 
-      var restartGame2 = $(".btn-success").on('click', function() {
-         countdown(60);
-         correctAnswers = 0;
-         wrongAnswers = 0;
-         
-         $("#answerScreen").hide(2000);
-         $("#correctScreen").empty();
-         $("#wrongScreen").empty();         
-         $('.container').show(1500);
 
-         correctAnswers = "";
-         wrongAnswers = "";
-   
-         $("#correctScreen").html("Correct Answers: " + correctAnswers);
-         $("#wrongScreen").html("Wrong Answers: " + wrongAnswers);
-
-
-      });
       
    });
    });

@@ -8,63 +8,75 @@
     <title>Canada Trivia Game</title>
     <meta name="description" content="">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="../TriviaGame/assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-    <div id="splashscreen">
-        <div class="splashBox">
-            <h3>Canada</h3>
-            <h1>The Trivia Game</h1>
-            <hr />
-            <p>You have 60 seconds to guess 10 questions.</p>
-            <br />
-            <p>Click To Start</p>
-            <button type="button" id="start-btn" class="btn btn-primary black-background white">START</button>
-        </div>
-    </div>
-
-    <div id="answerScreen">
-        <div class="splashBox2">
-            <h2>Let's see how you did</h2>
-            <hr />
-            <p id="correctScreen">Correct Answers: </p>
-            <p id="wrongScreen">Wrong Answers: </p>
-            <button type="button" class="btn btn-danger">RESET</button>
-            
-        </div>
-    </div>
-
-
-    <div id="timesUp">
-        <div class="wrongBox">
-            <h2 class="up">Time's Up!</h2>
-            <hr />
-            <p>Here's your score:</p>
-            <p id="correctTimesUp">Correct Answers: </p>
-            <p id="wrongTimesUp">Wrong Answers: </p>
-            <button type="button" class="btn btn-success">RESET</button>
-
-
-        </div>
-    </div>
-
     <div class="container">
-        <header>Canada Trivia!</header>
-        <div class="row timeRemain">Time Remaining:
-            <div id="time-remain"></div>
+        <div class="row">
+            <div class="col-sm-8">
+
+                <div id="welcomeScreen">
+                    <h3>Canada</h3>
+                    <h1>The Trivia Game</h1>
+                    <hr />
+                    <p>You have 60 seconds to guess 10 questions.</p>
+                    <br />
+                    <p>Click To Start</p>
+                    <button type="button" id="start-btn" class="btn btn-primary black-background white">START</button>
+                </div>
+
+            </div>
+
+
+            <div class="col-sm-4">
+                <img src="assets/images/canadaBackground.jpg" id="flag">
+            </div>
+
+            <div id="answerScreen">
+                <h2>Let's see how you did</h2>
+                <hr />
+                <p id="correctScreen">Correct Answers: </p>
+                <p id="wrongScreen">Wrong Answers: </p>
+                <button type="button" class="btn btn-danger" id="reset-btn-answerScreen">RESET</button>
+
+            </div>
         </div>
 
-        <div class="questions">
-            <button type="button" class="btn btn-primary black-background white" id="sub-but">Submit</button>
-            <!-- end equestions-->
+        <div class="col-sm-8">
+
+            <div id="timesUp">
+
+                <h2 class="up">Time's Up!</h2>
+                <hr />
+                <img src="assets/images/beaver.jpg" id="beaver">
+                <button type="button" class="btn btn-danger" id="reset-btn-timesUp">Click here to Try again, you can do  it!</button>
+
+            </div>
         </div>
 
+        <div class="col-sm-8">
+            <div class="container" id="gameScreen">
+                <header id="canadaTrivia">Canada Trivia!</header>
+                <div class="row timeRemain">Time Remaining:
+                    <div id="time-remain"></div>
+                    <div></div>
+                </div>
+
+                <div class="questions">
+                    <button type="button" class="btn btn-primary black-background white" id="sub-but">Submit</button>
+                    <!-- end equestions-->
+                </div>
+            </div>
+        </div>
         <!-- Main Container-->
     </div>
     <script src="../TriviaGame/assets/javascript/app.js"></script>
